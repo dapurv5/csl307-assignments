@@ -14,6 +14,7 @@ Author: Frank Pfenning
 #include "colorKernel.h"
 #include "rayTracer.h"
 #include "Color.h"
+#include "Vector4.h"
 
 #include "tests/test.h";
 
@@ -103,7 +104,7 @@ void draw_scene()
 //    	auto_ptr<Ray> ray(new Ray(x/32.0,y/32.0,zNear, x/32.0, y/32.0, -400));
     	auto_ptr<Ray> ray(new Ray(eX,eY,eZ, x*width/WIDTH, y*height/HEIGHT, 0));
 
-    	auto_ptr<Color> color(traceRay(*ray, 1));
+    	auto_ptr<Color> color(traceRay(*ray,1));
     	int red = color->getRed();
     	int green = color->getGreen();
     	int blue = color->getBlue();
@@ -321,19 +322,19 @@ int main (int argc, char ** argv)
 //    mode = MODE_DISPLAY;
 
 
-	mode = MODE_DISPLAY;
-//	char* scene_file = "../Assignment3/resources/test2.scene";
+//	mode = MODE_DISPLAY;
+	char* scene_file = "../Assignment3/resources/test2.scene";
 //	char* scene_file = "../Assignment3/resources/spheres.scene";
-	char* scene_file = "../Assignment3/resources/table.scene";
+//	char* scene_file = "../Assignment3/resources/table.scene";
 //	char* scene_file = "../Assignment3/resources/SIGGRAPH.scene";
 
 
 
 	glutInit(&argc,argv);
-	//  loadScene(argv[1]);
+//	loadScene(argv[0]);
 	loadScene(scene_file);
 
-	Test();
+	//Test();
 
 	glutInitDisplayMode(GLUT_RGBA | GLUT_SINGLE);
 	glutInitWindowPosition(0,0);

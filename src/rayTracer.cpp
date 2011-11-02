@@ -15,8 +15,6 @@
 
 using namespace std;
 
-#define MAX_DEPTH 3
-
 extern int iType;
 extern int index_triangle;
 
@@ -38,13 +36,8 @@ Color* traceRay(Ray& ray, int depth){
 		double x_boom = getXIntersect(ray, t);
 		double y_boom = getYIntersect(ray, t);
 		double z_boom = getZIntersect(ray, t);
-		color = getColor(x_boom,y_boom,z_boom,t);
-	}
+		color = getColor(x_boom,y_boom,z_boom,t, depth+1);
 
-	if(depth < MAX_DEPTH){
-		//TODO: Change this to recursive call.
-		return color;
-	}else{
-		return color;
 	}
+	return color;
 }

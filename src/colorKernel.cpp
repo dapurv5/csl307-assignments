@@ -10,6 +10,7 @@
 #include "Vector4.h"
 #include "Ray.h"
 #include "interpolator.h"
+#include "rayTracer.h"
 
 #include <stdlib.h>
 #include <iostream>
@@ -32,7 +33,7 @@ extern int num_triangles;
 extern int num_spheres;
 
 
-Color* getColor(double x, double y, double z, double t){
+Color* getColor(double x, double y, double z, double t, int depth){
 
 	Color* color = new Color(0,0,0);
 	int red = 0;
@@ -140,10 +141,26 @@ Color* getColor(double x, double y, double z, double t){
 		color->addMoreRed(red);
 		color->addMoreGreen(green);
 		color->addMoreBlue(blue);
+
+		if(depth < MAX_DEPTH){
+			auto_ptr<Ray> reflRay(new Ray(x,y,z,R->getX(), R->getY(), R->getZ()));
+			Color* newColor = traceRay(*reflRay, depth+1);
+
+			int newRed = (int)ks_red*newColor->getRed();
+			int newGreen = (int)ks_green*newColor->getGreen();
+			int newBlue = (int)ks_blue*newColor->getBlue();
+
+			color->addMoreRed(newRed);
+			color->addMoreGreen(newGreen);
+			color->addMoreBlue(newBlue);
+
+			delete newColor;
+		}
 	}
 
 	delete N;
 	iType = NONE;
+
 	return color;
 }
 

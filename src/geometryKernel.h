@@ -10,6 +10,7 @@
 
 
 #define INDEX 0
+#define MAX_DEPTH 2
 
 
 

@@ -26,7 +26,7 @@ double getSpecularRed(double I, double ks_red, double LN, double RV, double shin
 double getSpecularGreen(double I, double ks_green, double LN, double RV, double shininess);
 double getSpecularBlue(double I, double ks_blue, double LN, double RV, double shininess);
 
-Color* getColor(double x, double y, double z, double t);
+Color* getColor(double x, double y, double z, double t, int depth);
 bool isShadowed(double x, double y, double z, Light& currentLight);
 
 double distance(double x1, double y1, double z1, double x2, double y2, double z2);
