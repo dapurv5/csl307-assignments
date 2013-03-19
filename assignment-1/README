@@ -1,0 +1,14 @@
+To run the project.
+
+Assuming freeglut is installed onto your system.
+
+To make changes to the code and compile.
+Make changes to the code and run make
+
+$ make
+
+
+
+
+Run the executable.
+$ ./TurtleGraphics
